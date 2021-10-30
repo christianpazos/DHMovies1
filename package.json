@@ -2,7 +2,7 @@
   "name": "dhmovies",
   "version": "1.0.0",
   "description": "Challenge cierre de curso",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": { 
     "test": "nodemon src/index.js -e css,ejs,js,json,mjs",
     "start": "node src/index.js"
