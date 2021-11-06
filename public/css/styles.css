@@ -1,0 +1,36 @@
+body-lista {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1{
+
+color: #cdb4db  ;
+text-align: center;
+font-family: 'Roboto Mono', monospace;
+}
+
+
+
+a.navbar-brand.hola {
+
+color: #cdb4db;
+font-family: 'Roboto', sans-serif;
+}
+
+a.list-group-item.list-group-item-action{
+
+    font-family:  'Roboto', sans-serif;
+
+}
+
+li.nav-item.navbar-menu{
+
+    margin: 2px;
+
+}
+
+.container.detalle{
+margin-top: 100px;
+
+}

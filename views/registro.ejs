@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        integrity="undefined" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>REGISTRO</title>
+</head>
+
+<header>
+
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand hola">REGISTRO</a>
+            <ul class="nav justify-content-end">
+
+
+                <li class="nav-item navbar-menu">
+                    <a class="btn btn-outline-success" role="button" aria-pressed="true" href="/login">Log In</a>
+                </li>
+                <li class="nav-item navbar-menu">
+                    <a class="btn btn-outline-success" role="button" aria-pressed="true" href="/">Volver</a>
+                </li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <div class="container detalle">
+
+        <form class="center_div"  action="registrar" method="POST">
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input type="text" class="form-control"  name="name" aria-describedby="emailHelp" placeholder="Nombre" value="<%= locals.oldData ? oldData.name : null %>">
+                <% if (locals.errors && errors.name) { %> 
+                    <small id="emailHelp" class="form-text text-danger"><%= errors.name.msg %> </small>
+                    <% } %> 
+              </div>
+            <div class="form-group col-md-4">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control"   name="email" aria-describedby="emailHelp" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
+              
+              <% if (locals.errors && errors.email) { %> 
+                <small id="emailHelp" class="form-text text-danger"><%= errors.email.msg %> </small>
+                <% } else if (locals.errors && errors.errors) { %>  
+                    <small id="emailHelp" class="form-text text-danger"><%= errors.errors.msg %> </small>
+             <% } %> 
+            </div>
+            <div class="form-group col-md-4">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control"  name="password" placeholder="Contraseña">
+              <% if (locals.errors && errors.password) { %> 
+                <small id="emailHelp" class="form-text text-danger"><%= errors.password.msg %> </small>
+                <% }  else {%> <small id="passHelp" class="form-text text-muted">La contraseña debe tener almenos 8 caracteres alfanuméricos </small> <% } %>
+
+            </div>
+            <br>
+            <div class="form-check col-md-4">
+              <input type="radio" class="form-check-input"  name="rol" value="admin">
+              <label class="form-check-label" for="exampleCheck1">Administrador</label>
+            </div>
+           
+            <div class="form-check col-md-4">
+                <input type="radio" class="form-check-input" name="rol" value="invitado">
+                <label class="form-check-label" for="exampleCheck1">Invitado</label>
+              </div>
+              <% if (locals.errors && errors.rol) { %> 
+                <small id="emailHelp" class="form-text text-danger"><%= errors.rol.msg %> </small>
+                <% } %> 
+
+              <br>
+              <br>
+              <% if (!locals.errors) { %> 
+                <button type="submit" class="btn btn-primary" >Registrar</button>
+                <% } else {%> 
+            <button type="submit" class="btn btn-primary"  >Registrar</button>
+            <% } %>
+          </form>
+
+    </div>
+
+
+
+
+
+    
+
+
+</body>
+
+</html>

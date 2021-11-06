@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    integrity="undefined" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Martin</title>
+</head>
+
+<header>
+
+  <nav class="navbar navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand hola">PELÍCULAS</a>
+      <ul class="nav justify-content-end">
+
+        <% if(usuario == undefined ){ %>
+        <li class="nav-item navbar-menu">
+          <a class="btn btn-outline-success" role="button" aria-pressed="true" href="/login">Log In</a>
+        </li>
+        <li class="nav-item navbar-menu">
+          <a class="btn btn-outline-secondary" role="button" aria-pressed="true" href="/registrar">Registrar</a>
+        </li>
+        <% } %>
+        <% if(usuario != undefined ){ %> 
+          <li class="nav-item navbar-menu">
+              <a class="btn btn-outline-dark" role="button" aria-pressed="true" href=""><%= usuario %> </a>
+          </li>
+          <% } %> 
+        <% if(usuario != undefined ){ %> 
+        <li class="nav-item navbar-menu">
+          <a class="btn btn-outline-secondary" role="button" onclick="alerta()" aria-pressed="true">Log Out</a>
+        </li>
+        <% } %>
+        <% if(usuario != undefined ){ %> 
+          <li class="nav-item navbar-menu">
+            <a class="btn btn-outline-secondary" role="button" aria-pressed="true" href="/crear">Agregar</a>
+          </li>
+          <% } %>
+      
+     
+
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<body class="body-lista">
+
+  <br>
+  <div class="container list-group-flush">
+
+
+    <% for(let i=0; i< peliculas.length; i++) { %>
+      <a href="/detalle/<%= peliculas[i].id %> " class="list-group-item list-group-item-action">
+        <%= peliculas[i].title %>
+      </a>
+      <% } %>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="undefined"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.esm.min.js" integrity="undefined"
+    crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    function alerta() {
+      Swal.fire({
+        title: 'Logout',
+        text: "Seguro que desea desconectarse? ",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#26CB49',
+        cancelButtonColor: '#d33',
+        cancelButtonText:'Cancelar',
+        confirmButtonText: 'Si'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Desconectado',
+            text: 'Gracias por utilizar nuestros servicios.',
+            icon: 'success',
+            timer: 1800,
+            showConfirmButton: false
+          }
+          ).then(function () {
+            window.location = "/logout";
+          })
+        }
+      })
+    }
+  </script>
+</body>
